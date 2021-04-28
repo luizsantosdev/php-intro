@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -20,6 +23,18 @@ padding: 30px 0px;
 <p>FORMULARIO PARA INSCRIÇÃO DE COMPETIDORES</p>
 
 <form action="script.php" method="post">
+       <?php
+           $MensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : '';
+           if(!empty($MensagemDeSucesso))
+           {
+               echo $MensagemDeSucesso  ;
+           }
+           $MensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : '';
+           if(!empty($MensagemDeErro))
+           {
+               echo $MensagemDeErro;
+           }
+       ?>
       <p>Your Name: <input type="text" name="nome"></p>
       <p>Your age: <input type="text" name="idade"></p>
       <p><input type="submit" value="Enviar Dados"/></p>
@@ -27,5 +42,8 @@ padding: 30px 0px;
 
 </body>
 
+<header>
+
+</header>
 
 </html>
