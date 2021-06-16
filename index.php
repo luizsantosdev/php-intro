@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+include "servicos/servicoMensagemSessao.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -24,12 +26,12 @@ padding: 30px 0px;
 
 <form action="script.php" method="post">
        <?php
-           $MensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : '';
+           $MensagemDeSucesso = obterMensagemSucesso();
            if(!empty($MensagemDeSucesso))
            {
                echo $MensagemDeSucesso  ;
            }
-           $MensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : '';
+           $MensagemDeErro = obterMensagemErro();
            if(!empty($MensagemDeErro))
            {
                echo $MensagemDeErro;
